@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.perfil.PerfilFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_perfil" />
+
+    <fragment
+        android:id="@+id/nav_inmueble"
+        android:name="com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.inmuebles.InmueblesFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_inmueble" >
+        <action
+            android:id="@+id/action_nav_inmueble_to_inmuebleFragment"
+            app:destination="@id/inmuebleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/inmuebleFragment"
+        android:name="com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.inmuebles.InmuebleFragment"
+        android:label="Nota"
+        tools:layout="@layout/fragment_inmueble" >
+        <action
+            android:id="@+id/action_inmuebleFragment_to_nav_inmueble"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+</navigation>

@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Ulp_lab3_inmobiliaria_cliente" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.Ulp_lab3_inmobiliaria_cliente" parent="Base.Theme.Ulp_lab3_inmobiliaria_cliente" />
+
+    <style name="Theme.Ulp_lab3_inmobiliaria_cliente.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Ulp_lab3_inmobiliaria_cliente.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Ulp_lab3_inmobiliaria_cliente.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
