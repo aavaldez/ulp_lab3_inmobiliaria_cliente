@@ -51,7 +51,7 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
         private TextView inmueble;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            inmueble = itemView.findViewById(R.id.tvNota);
+            inmueble = itemView.findViewById(R.id.tvApellido);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @SuppressLint("ResourceType")
                 @Override

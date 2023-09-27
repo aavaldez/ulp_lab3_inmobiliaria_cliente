@@ -51,7 +51,7 @@ public class PagoAdapter extends RecyclerView.Adapter<PagoAdapter.ViewHolder> {
         private TextView pago;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            pago = itemView.findViewById(R.id.tvNota);
+            pago = itemView.findViewById(R.id.tvPagoCodigo);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @SuppressLint("ResourceType")
                 @Override
