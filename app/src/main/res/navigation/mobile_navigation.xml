@@ -14,27 +14,86 @@
     <fragment
         android:id="@+id/nav_perfil"
         android:name="com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.perfil.PerfilFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_perfil"
         tools:layout="@layout/fragment_perfil" />
 
     <fragment
-        android:id="@+id/nav_inmueble"
+        android:id="@+id/nav_inmuebles"
         android:name="com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.inmuebles.InmueblesFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_inmueble" >
+        android:label="@string/menu_inmuebles"
+        tools:layout="@layout/fragment_inmuebles" >
         <action
-            android:id="@+id/action_nav_inmueble_to_inmuebleFragment"
+            android:id="@+id/action_nav_inmuebles_to_inmuebleFragment"
             app:destination="@id/inmuebleFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/inmuebleFragment"
         android:name="com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.inmuebles.InmuebleFragment"
-        android:label="Nota"
+        android:label="@string/menu_inmuebles"
         tools:layout="@layout/fragment_inmueble" >
         <action
-            android:id="@+id/action_inmuebleFragment_to_nav_inmueble"
-            app:destination="@id/nav_home" />
+            android:id="@+id/action_inmuebleFragment_to_nav_inmuebles"
+            app:destination="@id/nav_inmuebles" />
     </fragment>
+
+    <fragment
+        android:id="@+id/nav_inquilinos"
+        android:name="com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.inquilinos.InquilinosFragment"
+        android:label="@string/menu_inquilinos"
+        tools:layout="@layout/fragment_inquilinos" >
+        <action
+            android:id="@+id/action_nav_inquilinos_to_inquilinoFragment"
+            app:destination="@id/inquilinoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/inquilinoFragment"
+        android:name="com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.inquilinos.InquilinoFragment"
+        android:label="@string/menu_inquilinos"
+        tools:layout="@layout/fragment_inquilino" >
+        <action
+            android:id="@+id/action_inquilinoFragment_to_nav_inquilinos"
+            app:destination="@id/nav_inquilinos" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_contratos"
+        android:name="com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.contratos.ContratosFragment"
+        android:label="@string/menu_contratos"
+        tools:layout="@layout/fragment_contratos" >
+        <action
+            android:id="@+id/action_nav_contratos_to_contratoFragment"
+            app:destination="@id/contratoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contratoFragment"
+        android:name="com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.contratos.ContratoFragment"
+        android:label="@string/menu_contratos"
+        tools:layout="@layout/fragment_contrato" >
+        <action
+            android:id="@+id/action_contratoFragment_to_nav_contratos"
+            app:destination="@id/nav_contratos" />
+        <action
+            android:id="@+id/action_contratoFragment_to_pagosFragment"
+            app:destination="@id/pagosFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pagosFragment"
+        android:name="com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.contratos.PagosFragment"
+        android:label="@string/menu_contratos"
+        tools:layout="@layout/fragment_pagos" >
+        <action
+            android:id="@+id/action_pagosFragment_to_contratoFragment"
+            app:destination="@id/contratoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_salir"
+        android:name="com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.salir.SalirFragment"
+        android:label="@string/menu_salir"
+        tools:layout="@layout/fragment_salir" />
 
 </navigation>

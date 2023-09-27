@@ -1,7 +1,7 @@
 package com.a2valdez.ulp_lab3_inmobiliaria_cliente.request;
 
-import com.example.plantilla.R;
-import com.example.plantilla.modelo.*;
+import com.a2valdez.ulp_lab3_inmobiliaria_cliente.R;
+import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.*;
 
 import java.util.ArrayList;
 
