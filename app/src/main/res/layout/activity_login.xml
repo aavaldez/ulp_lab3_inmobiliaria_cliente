@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etUsuario"
+        android:id="@+id/etLoginUsuario"
         android:layout_width="wrap_content"
         android:layout_height="52dp"
         android:layout_marginTop="40dp"

@@ -33,7 +33,7 @@ public class LoginActivityViewModel extends AndroidViewModel {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         } else {
-            mensaje = "Usuario o conrtaseña incorrecto";
+            mensaje = "Usuario o contraseña incorrecto";
             mMensaje.setValue(mensaje);
         }
     }

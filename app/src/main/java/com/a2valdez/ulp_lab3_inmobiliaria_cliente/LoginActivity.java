@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.databinding.ActivityLoginBinding;
+
 public class LoginActivity extends AppCompatActivity {
 
     private LoginActivityViewModel mv;
@@ -26,8 +27,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mv.Login(
-                        binding.etUsuario.getText().toString(),
-                        binding.etPassword.getText().toString()
+                        binding.etLoginUsuario.getText().toString(),
+                        binding.etLoginPassword.getText().toString()
                 );
             }
         });
