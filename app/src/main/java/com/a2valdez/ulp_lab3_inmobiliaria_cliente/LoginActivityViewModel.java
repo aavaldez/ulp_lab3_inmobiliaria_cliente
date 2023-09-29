@@ -3,11 +3,15 @@ package com.a2valdez.ulp_lab3_inmobiliaria_cliente;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Propietario;
+import com.a2valdez.ulp_lab3_inmobiliaria_cliente.request.ApiClient;
 
 public class LoginActivityViewModel extends AndroidViewModel {
     private Context context;
@@ -25,9 +29,10 @@ public class LoginActivityViewModel extends AndroidViewModel {
         return mMensaje;
     }
 
-    public void Login(String usuario, String password){
+    public void Login(String email, String password){
         String mensaje;
-        if(usuario.equals("aavaldez") && password.equals("asdasd")){
+        Propietario propietario = ApiClient.getApi().login(email, password);
+        if( propietario != null ){
             //Cargar activity
             Intent intent = new Intent(context, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

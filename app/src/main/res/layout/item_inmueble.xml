@@ -14,16 +14,16 @@
         android:layout_height="696dp">
 
         <ImageView
-            android:id="@+id/ivInmueble"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/ivItemInmueble"
+            android:layout_width="229dp"
+            android:layout_height="135dp"
             android:src="@drawable/sample"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvInmuebleDireccion"
+            android:id="@+id/tvItemInmuebleDireccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -32,10 +32,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivInmueble" />
+            app:layout_constraintTop_toBottomOf="@+id/ivItemInmueble" />
 
         <TextView
-            android:id="@+id/tvInmueblePrecio"
+            android:id="@+id/tvItemInmueblePrecio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -44,7 +44,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvInmuebleDireccion" />
+            app:layout_constraintTop_toBottomOf="@+id/tvItemInmuebleDireccion" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

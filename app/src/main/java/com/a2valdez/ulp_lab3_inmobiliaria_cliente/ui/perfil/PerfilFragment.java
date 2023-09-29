@@ -1,5 +1,6 @@
 package com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.perfil;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -12,11 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.a2valdez.ulp_lab3_inmobiliaria_cliente.R;
+import com.a2valdez.ulp_lab3_inmobiliaria_cliente.databinding.FragmentPerfilBinding;
+import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Propietario;
 
 public class PerfilFragment extends Fragment {
-
-    private PerfilViewModel mViewModel;
+    private FragmentPerfilBinding binding;
+    private PerfilViewModel mv;
 
     public static PerfilFragment newInstance() {
         return new PerfilFragment();
@@ -25,14 +27,38 @@ public class PerfilFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_perfil, container, false);
+        binding = FragmentPerfilBinding.inflate(inflater, container, false);
+        mv = new ViewModelProvider(this).get(PerfilViewModel.class);
+        View root = binding.getRoot();
+        mv.getMPropietario().observe(getViewLifecycleOwner(), new Observer<Propietario>() {
+            @Override
+            public void onChanged(Propietario propietario) {
+                if (propietario != null){
+                    binding.etPerfilId.setText(String.valueOf(propietario.getId()));
+                    binding.etPerfilDni.setText(String.valueOf(propietario.getDni()));
+                    binding.etPerfilApellido.setText(propietario.getApellido());
+                    binding.etPerfilNombre.setText(propietario.getNombre());
+                    binding.etPerfilEmail.setText(propietario.getEmail());
+                    binding.etPerfilPassword.setText(propietario.getContraseña());
+                    binding.etPerfilTelefono.setText(propietario.getTelefono());
+                }
+            }
+        });
+        binding.btPerfilGuardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mv.GuardarPropietario(
+                        binding.etPerfilId.getText().toString(),
+                        binding.etPerfilDni.getText().toString(),
+                        binding.etPerfilApellido.getText().toString(),
+                        binding.etPerfilNombre.getText().toString(),
+                        binding.etPerfilEmail.getText().toString(),
+                        binding.etPerfilPassword.getText().toString(),
+                        binding.etPerfilTelefono.getText().toString()
+                );
+            }
+        });
+        mv.LeerUsuario();
+        return root;
     }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(PerfilViewModel.class);
-        // TODO: Use the ViewModel
-    }
-
 }

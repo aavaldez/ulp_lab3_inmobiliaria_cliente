@@ -31,7 +31,7 @@ public class HomeFragment extends Fragment {
         mv.getMMapa().observe(getViewLifecycleOwner(), new Observer<HomeViewModel.MapaActual>() {
             @Override
             public void onChanged(HomeViewModel.MapaActual mapaActual) {
-                SupportMapFragment smf = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_view);
+                SupportMapFragment smf = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
                 smf.getMapAsync(mapaActual);
             }
         });

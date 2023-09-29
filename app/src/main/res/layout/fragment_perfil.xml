@@ -7,7 +7,34 @@
     tools:context=".ui.perfil.PerfilFragment" >
 
     <TextView
-        android:id="@+id/tvNombre"
+        android:id="@+id/tvPerfilId"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="Código"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etPerfilId"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="Código"
+        android:autofillHints="ódigo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPerfilId" />
+
+    <TextView
+        android:id="@+id/tvPerfilNombre"
         android:layout_width="match_parent"
         android:layout_height="24dp"
         android:layout_marginTop="20dp"
@@ -16,10 +43,10 @@
         android:text="Nombre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/etPerfilId" />
 
     <EditText
-        android:id="@+id/etNombre"
+        android:id="@+id/etPerfilNombre"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:ems="10"
@@ -28,12 +55,13 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:hint="Nombre"
+        android:autofillHints="name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPerfilNombre" />
 
     <TextView
-        android:id="@+id/tvApellido"
+        android:id="@+id/tvPerfilApellido"
         android:layout_width="match_parent"
         android:layout_height="24dp"
         android:layout_marginTop="20dp"
@@ -42,10 +70,10 @@
         android:text="Apellido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/etPerfilNombre" />
 
     <EditText
-        android:id="@+id/etApellido"
+        android:id="@+id/etPerfilApellido"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:ems="10"
@@ -56,10 +84,10 @@
         android:hint="Apellido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvApellido" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPerfilApellido" />
 
     <TextView
-        android:id="@+id/tvDni"
+        android:id="@+id/tvPerfilDni"
         android:layout_width="match_parent"
         android:layout_height="24dp"
         android:layout_marginTop="20dp"
@@ -68,10 +96,10 @@
         android:text="DNI"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etApellido" />
+        app:layout_constraintTop_toBottomOf="@+id/etPerfilApellido" />
 
     <EditText
-        android:id="@+id/etDni"
+        android:id="@+id/etPerfilDni"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:ems="10"
@@ -82,10 +110,10 @@
         android:hint="DNI"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDni" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPerfilDni" />
 
     <TextView
-        android:id="@+id/tvEmail"
+        android:id="@+id/tvPerfilEmail"
         android:layout_width="match_parent"
         android:layout_height="24dp"
         android:layout_marginTop="20dp"
@@ -94,10 +122,10 @@
         android:text="Email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDni" />
+        app:layout_constraintTop_toBottomOf="@+id/etPerfilDni" />
 
     <EditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etPerfilEmail"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:ems="10"
@@ -108,10 +136,10 @@
         android:hint="Email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPerfilEmail" />
 
     <TextView
-        android:id="@+id/tvPassword"
+        android:id="@+id/tvPerfilPassword"
         android:layout_width="match_parent"
         android:layout_height="24dp"
         android:layout_marginTop="20dp"
@@ -120,10 +148,10 @@
         android:text="Contraseña"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/etPerfilEmail" />
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etPerfilPassword"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:ems="10"
@@ -134,10 +162,10 @@
         android:hint="Contraseña"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPerfilPassword" />
 
     <TextView
-        android:id="@+id/tvTelefono"
+        android:id="@+id/tvPerfilTelefono"
         android:layout_width="match_parent"
         android:layout_height="24dp"
         android:layout_marginTop="20dp"
@@ -146,10 +174,10 @@
         android:text="Teléfono"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etPerfilPassword" />
 
     <EditText
-        android:id="@+id/etTelefono"
+        android:id="@+id/etPerfilTelefono"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:ems="10"
@@ -160,15 +188,17 @@
         android:hint="Teléfono"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTelefono" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPerfilTelefono" />
 
     <Button
-        android:id="@+id/btGuardar"
-        android:layout_width="wrap_content"
+        android:id="@+id/btPerfilGuardar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:text="Guardar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTelefono" />
+        app:layout_constraintTop_toBottomOf="@+id/etPerfilTelefono" />
 </androidx.constraintlayout.widget.ConstraintLayout>

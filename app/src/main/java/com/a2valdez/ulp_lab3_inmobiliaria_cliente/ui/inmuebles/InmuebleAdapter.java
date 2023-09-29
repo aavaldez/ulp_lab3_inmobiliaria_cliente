@@ -38,7 +38,8 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //holder.inmueble.add(inmuebles.get(position));
+        holder.direccion.setText(inmuebles.get(position).getDireccion());
+        holder.precio.setText(String.valueOf(inmuebles.get(position).getPrecio()));
     }
 
     @Override
@@ -48,16 +49,19 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView inmueble;
+        private TextView direccion;
+        private TextView precio;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            inmueble = itemView.findViewById(R.id.tvApellido);
+            direccion = itemView.findViewById(R.id.tvItemInmuebleDireccion);
+            precio = itemView.findViewById(R.id.tvItemInmueblePrecio);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @SuppressLint("ResourceType")
                 @Override
                 public void onClick(View view) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("nota", inmueble.getText().toString());
+                    bundle.putString("direccion", direccion.getText().toString());
+                    bundle.putString("precio", precio.getText().toString());
                     Navigation.findNavController(view).navigate(R.id.inmuebleFragment, bundle);
                 }
             });

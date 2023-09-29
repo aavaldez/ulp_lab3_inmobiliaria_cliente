@@ -19,21 +19,18 @@ public class ApiClient {
         //Nos conectamos a nuestra "Base de Datos"
         cargaDatos();
     }
+
     //Método para crear una instancia de ApiClient
     public static ApiClient getApi(){
         if (api==null){
             api=new ApiClient();
         }
         return api;
+    }
 
-        }
-
-
-
-
-//Servicios
+    //Servicios
     //Para que pueda iniciar sesion
-public Propietario login(String mail, final String password){
+    public Propietario login(String mail, final String password){
         for(Propietario propietario:propietarios){
             if(propietario.getEmail().equals(mail)&&propietario.getContraseña().equals(password)){
                 usuarioActual=propietario;
@@ -41,10 +38,9 @@ public Propietario login(String mail, final String password){
             }
         }
         return null;
-}
+    }
 
-
-//Retorna el usuario que inició Sesión
+    //Retorna el usuario que inició Sesión
     public Propietario obtenerUsuarioActual(){
         return usuarioActual;
     }
@@ -60,7 +56,7 @@ public Propietario login(String mail, final String password){
         return temp;
     }
 
-//Lista de inmuebles alquilados actualmente del propietario logueado.
+    //Lista de inmuebles alquilados actualmente del propietario logueado.
     public ArrayList<Inmueble> obtenerPropiedadesAlquiladas(){
         ArrayList<Inmueble> temp=new ArrayList<>();
         for(Contrato contrato:contratos){
@@ -71,9 +67,7 @@ public Propietario login(String mail, final String password){
         return temp;
     }
 
-
-//Dado un inmueble retorna el contrato activo de dicho inmueble
-
+    //Dado un inmueble retorna el contrato activo de dicho inmueble
     public Contrato obtenerContratoVigente(Inmueble inmueble){
 
         for(Contrato contrato:contratos){
@@ -93,7 +87,8 @@ public Propietario login(String mail, final String password){
         }
         return null;
     }
-//Dado un Contrato, retorna los pagos de dicho contrato
+
+    //Dado un Contrato, retorna los pagos de dicho contrato
     public ArrayList<Pago> obtenerPagos(Contrato contratoVer){
         ArrayList<Pago> temp=new ArrayList<>();
         for(Contrato contrato:contratos){
@@ -108,7 +103,8 @@ public Propietario login(String mail, final String password){
         }
         return temp;
     }
-//Actualizar Perfil
+
+    //Actualizar Perfil
     public void actualizarPerfil(Propietario propietario){
         int posición=propietarios.indexOf(propietario);
         if(posición!=-1){
@@ -125,7 +121,6 @@ public Propietario login(String mail, final String password){
     }
 
     private void cargaDatos(){
-
         //Propietarios
         Propietario juan=new Propietario(1,23492012L,"Juan","Perez","juan@mail.com","123","2664553447", R.drawable.juan);
         Propietario sonia=new Propietario(2,17495869L,"Sonia","Lucero","sonia@mail.com","123","266485417",R.drawable.sonia);
@@ -156,9 +151,5 @@ public Propietario login(String mail, final String password){
         pagos.add(new Pago(900,1,uno,17000,"10/08/2020"));
         pagos.add(new Pago(901,2,uno,17000,"10/09/2020"));
         pagos.add(new Pago(902,3,uno,17000,"10/10/2020"));
-
-
-
-
     }
 }
