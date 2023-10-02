@@ -1,6 +1,8 @@
 package com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.contratos;
 
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import androidx.navigation.Navigation;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.R;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.databinding.FragmentContratoBinding;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Contrato;
+import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Inmueble;
 
 public class ContratoFragment extends Fragment {
 
@@ -38,13 +41,14 @@ public class ContratoFragment extends Fragment {
                 binding.etContratoFechaInicio.setText(c.getFechaInicio());
                 binding.etContratoFechaFin.setText(c.getFechaFin());
                 binding.etContratoMonto.setText(String.valueOf(c.getMontoAlquiler()));
-                binding.etContratoInquilino.setText(c.getInquilino().getNombre()+" "+c.getInquilino().getApellido());
+                binding.etContratoInquilino.setText(c.getInquilino().getApellido());
                 binding.etContratoInmueble.setText(c.getInmueble().getDireccion());
+                binding.etContratoInmuebleId.setText(String.valueOf(c.getInmueble().getIdInmueble()));
                 binding.etContratoPagos.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable("inmueble", c.getInmueble());
+                        bundle.putParcelable("inmueble", (Parcelable) c.getInmueble());
                         Navigation.findNavController(v).navigate(R.id.pagosFragment, bundle);
                     }
                 });
