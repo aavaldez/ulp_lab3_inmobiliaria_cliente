@@ -3,9 +3,11 @@ package com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.inmuebles;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,7 +20,6 @@ import com.a2valdez.ulp_lab3_inmobiliaria_cliente.R;
 import java.util.List;
 
 public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHolder> {
-
     private List<Inmueble> inmuebles;
     private Context contexto;
     private LayoutInflater li;
@@ -40,6 +41,7 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.direccion.setText(inmuebles.get(position).getDireccion());
         holder.precio.setText(String.valueOf(inmuebles.get(position).getPrecio()));
+        holder.id.setText(String.valueOf(position));
     }
 
     @Override
@@ -51,17 +53,18 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
 
         private TextView direccion;
         private TextView precio;
+        private EditText id;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             direccion = itemView.findViewById(R.id.tvItemInmuebleDireccion);
             precio = itemView.findViewById(R.id.tvItemInmueblePrecio);
+            id = itemView.findViewById(R.id.etItemInmuebleId);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @SuppressLint("ResourceType")
                 @Override
                 public void onClick(View view) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("direccion", direccion.getText().toString());
-                    bundle.putString("precio", precio.getText().toString());
+                    bundle.putString("id", id.getText().toString());
                     Navigation.findNavController(view).navigate(R.id.inmuebleFragment, bundle);
                 }
             });

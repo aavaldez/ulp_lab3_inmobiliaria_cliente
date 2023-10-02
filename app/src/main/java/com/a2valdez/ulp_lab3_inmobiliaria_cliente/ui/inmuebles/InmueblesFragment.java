@@ -26,7 +26,6 @@ public class InmueblesFragment extends Fragment {
     public static InmueblesFragment newInstance() {
         return new InmueblesFragment();
     }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -37,21 +36,19 @@ public class InmueblesFragment extends Fragment {
             @Override
             public void onChanged(List<Inmueble> listaActual) {
                 RecyclerView rv = root.findViewById(R.id.rvInmuebles);
-                GridLayoutManager glm = new GridLayoutManager(getContext(), 5, GridLayoutManager.HORIZONTAL, false);
+                GridLayoutManager glm = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
                 rv.setLayoutManager(glm);
-                InmuebleAdapter nad = new InmuebleAdapter(listaActual, getContext(), getLayoutInflater());
-                rv.setAdapter(nad);
+                InmuebleAdapter iad = new InmuebleAdapter(listaActual, getContext(), getLayoutInflater());
+                rv.setAdapter(iad);
             }
         });
         mv.leerInmuebles();
         return root;
     }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(InmueblesViewModel.class);
         // TODO: Use the ViewModel
     }
-
 }

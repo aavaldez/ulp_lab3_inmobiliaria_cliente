@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,18 +15,19 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.R;
+import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Inmueble;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Inquilino;
 
 import java.util.List;
 
 public class InquilinoAdapter extends RecyclerView.Adapter<InquilinoAdapter.ViewHolder> {
 
-    private List<Inquilino> inquilinos;
+    private List<Inmueble> inmuebles;
     private Context contexto;
     private LayoutInflater li;
 
-    public InquilinoAdapter(List<Inquilino> inquilinos, Context contexto, LayoutInflater li) {
-        this.inquilinos = inquilinos;
+    public InquilinoAdapter(List<Inmueble> inmuebles, Context contexto, LayoutInflater li) {
+        this.inmuebles = inmuebles;
         this.contexto = contexto;
         this.li = li;
     }
@@ -38,27 +41,31 @@ public class InquilinoAdapter extends RecyclerView.Adapter<InquilinoAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //holder.inquilino.add(inquilinos.get(position));
+        holder.direccion.setText(inmuebles.get(position).getDireccion());
+        holder.id.setText(String.valueOf(position));
     }
 
     @Override
     public int getItemCount() {
-        return inquilinos.size();
+        return inmuebles.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-
-        private TextView inquilino;
+        private TextView direccion;
+        private EditText id;
+        private Button ver;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            inquilino = itemView.findViewById(R.id.tvApellido);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @SuppressLint("ResourceType")
+            direccion = itemView.findViewById(R.id.tvItemInquilinoDireccion);
+            id = itemView.findViewById(R.id.etItemInquilinoInmuebleId);
+            ver = itemView.findViewById(R.id.btItemInquilinoVer);
+
+            ver.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("nota", inquilino.getText().toString());
-                    Navigation.findNavController(view).navigate(R.id.inmuebleFragment, bundle);
+                    bundle.putString("id", id.getText().toString());
+                    Navigation.findNavController(view).navigate(R.id.inquilinoFragment, bundle);
                 }
             });
         }
