@@ -15,21 +15,17 @@ import java.util.List;
 
 public class InquilinosViewModel extends AndroidViewModel {
     private Context context;
-
     private MutableLiveData<List<Inmueble>> mLista;
-
     public InquilinosViewModel(@NonNull Application application) {
         super(application);
         context = application.getApplicationContext();
     }
-
     public LiveData<List<Inmueble>> getmLista() {
         if(mLista == null){
             mLista = new MutableLiveData<>();
         }
         return mLista;
     }
-
     public void leerInmuebles(){
         mLista.setValue(ApiClient.getApi().obtenerPropiedadesAlquiladas());
     }

@@ -22,7 +22,6 @@ import java.util.List;
 public class InmueblesFragment extends Fragment {
     private InmueblesViewModel mViewModel;
     private FragmentInmueblesBinding binding;
-
     public static InmueblesFragment newInstance() {
         return new InmueblesFragment();
     }

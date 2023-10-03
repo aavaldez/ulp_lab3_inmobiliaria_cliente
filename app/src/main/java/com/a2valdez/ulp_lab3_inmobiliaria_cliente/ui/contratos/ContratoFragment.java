@@ -48,7 +48,7 @@ public class ContratoFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         Bundle bundle = new Bundle();
-                        bundle.putParcelable("inmueble", (Parcelable) c.getInmueble());
+                        bundle.putSerializable("inmueble", c.getInmueble());
                         Navigation.findNavController(v).navigate(R.id.pagosFragment, bundle);
                     }
                 });

@@ -20,11 +20,9 @@ import com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.inmuebles.InmuebleFragment;
 public class InquilinoFragment extends Fragment {
     private FragmentInquilinoBinding binding;
     private InquilinoViewModel mv;
-
     public static InquilinoFragment newInstance() {
         return new InquilinoFragment();
     }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -47,7 +45,6 @@ public class InquilinoFragment extends Fragment {
         mv.obtenerInquilino(getArguments());
         return root;
     }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

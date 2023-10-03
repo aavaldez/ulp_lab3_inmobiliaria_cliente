@@ -40,6 +40,6 @@ public class PerfilViewModel extends AndroidViewModel {
     public void GuardarPropietario(String id, String dni, String nombre, String apellido, String email, String password, String telefono){
         Propietario p = new Propietario(Integer.parseInt(id), Long.parseLong(dni), nombre, apellido, email, password, telefono, 1);
         ApiClient.getApi().actualizarPerfil(p);
-        LeerUsuario();
+        mPropietario.setValue(p);
     }
 }

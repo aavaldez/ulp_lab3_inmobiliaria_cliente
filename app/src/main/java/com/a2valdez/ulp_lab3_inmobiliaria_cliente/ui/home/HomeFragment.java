@@ -20,9 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 
 public class HomeFragment extends Fragment {
     private HomeViewModel mv;
-
     private FragmentHomeBinding binding;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
@@ -38,8 +36,6 @@ public class HomeFragment extends Fragment {
         mv.obtenerMapa();
         return root;
     }
-
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

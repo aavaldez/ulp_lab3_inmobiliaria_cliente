@@ -21,35 +21,29 @@ import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Inquilino;
 import java.util.List;
 
 public class InquilinoAdapter extends RecyclerView.Adapter<InquilinoAdapter.ViewHolder> {
-
     private List<Inmueble> inmuebles;
     private Context contexto;
     private LayoutInflater li;
-
     public InquilinoAdapter(List<Inmueble> inmuebles, Context contexto, LayoutInflater li) {
         this.inmuebles = inmuebles;
         this.contexto = contexto;
         this.li = li;
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = li.inflate(R.layout.item_inquilino, parent, false);
         return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.direccion.setText(inmuebles.get(position).getDireccion());
         holder.id.setText(String.valueOf(position));
     }
-
     @Override
     public int getItemCount() {
         return inmuebles.size();
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView direccion;
         private EditText id;
@@ -59,7 +53,6 @@ public class InquilinoAdapter extends RecyclerView.Adapter<InquilinoAdapter.View
             direccion = itemView.findViewById(R.id.tvItemInquilinoDireccion);
             id = itemView.findViewById(R.id.etItemInquilinoInmuebleId);
             ver = itemView.findViewById(R.id.btItemInquilinoVer);
-
             ver.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

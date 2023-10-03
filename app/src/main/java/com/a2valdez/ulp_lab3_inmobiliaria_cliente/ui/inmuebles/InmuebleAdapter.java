@@ -23,34 +23,28 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
     private List<Inmueble> inmuebles;
     private Context contexto;
     private LayoutInflater li;
-
     public InmuebleAdapter(List<Inmueble> inmuebles, Context contexto, LayoutInflater li) {
         this.inmuebles = inmuebles;
         this.contexto = contexto;
         this.li = li;
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = li.inflate(R.layout.item_inmueble, parent, false);
         return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.direccion.setText(inmuebles.get(position).getDireccion());
         holder.precio.setText(String.valueOf(inmuebles.get(position).getPrecio()));
         holder.id.setText(String.valueOf(position));
     }
-
     @Override
     public int getItemCount() {
         return inmuebles.size();
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder{
-
         private TextView direccion;
         private TextView precio;
         private EditText id;

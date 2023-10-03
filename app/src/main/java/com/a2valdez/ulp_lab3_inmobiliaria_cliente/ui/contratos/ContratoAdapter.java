@@ -30,20 +30,17 @@ public class ContratoAdapter extends RecyclerView.Adapter<ContratoAdapter.ViewHo
         this.contexto = contexto;
         this.li = li;
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = li.inflate(R.layout.item_contrato, parent, false);
         return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.direccion.setText(inmuebles.get(position).getDireccion());
         holder.id.setText(String.valueOf(position));
     }
-
     @Override
     public int getItemCount() {
         return inmuebles.size();
@@ -58,7 +55,6 @@ public class ContratoAdapter extends RecyclerView.Adapter<ContratoAdapter.ViewHo
             direccion = itemView.findViewById(R.id.tvItemContratoDireccion);
             id = itemView.findViewById(R.id.etItemContratoInmuebleId);
             ver = itemView.findViewById(R.id.btItemContratoVer);
-
             ver.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

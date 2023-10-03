@@ -24,7 +24,6 @@ import java.util.List;
 public class InquilinosFragment extends Fragment {
     InquilinosViewModel mv;
     private FragmentInquilinosBinding binding;
-
     public static InquilinosFragment newInstance() {
         return new InquilinosFragment();
     }

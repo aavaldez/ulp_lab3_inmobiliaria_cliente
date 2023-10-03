@@ -41,7 +41,7 @@ public class PagosFragment extends Fragment {
             @Override
             public void onChanged(List<Pago> listaActual) {
                 RecyclerView rv = root.findViewById(R.id.rvPagos);
-                GridLayoutManager glm = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
+                GridLayoutManager glm = new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false);
                 rv.setLayoutManager(glm);
                 PagoAdapter pad = new PagoAdapter(listaActual, getContext(), getLayoutInflater());
                 rv.setAdapter(pad);

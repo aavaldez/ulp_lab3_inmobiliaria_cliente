@@ -22,11 +22,9 @@ import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Inmueble;
 public class InmuebleFragment extends Fragment {
     private FragmentInmuebleBinding binding;
     private InmuebleViewModel mv;
-
     public static InmuebleFragment newInstance() {
         return new InmuebleFragment();
     }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -42,12 +40,18 @@ public class InmuebleFragment extends Fragment {
                 binding.etInmueblePrecio.setText(String.valueOf(i.getPrecio()));
                 binding.etInmuebleUso.setText(i.getUso());
                 binding.etInmuebleTipo.setText(i.getTipo());
+                binding.swInmuebleDisponible.setChecked(i.isEstado());
+                binding.swInmuebleDisponible.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mv.actualizarInmueble(i);
+                    }
+                });
             }
         });
         mv.obtenerInmueble(getArguments());
         return root;
     }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

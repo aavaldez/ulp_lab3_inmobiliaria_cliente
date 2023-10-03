@@ -35,7 +35,7 @@ public class PagosViewModel extends AndroidViewModel {
     }
 
     public void obtenerPagos(Bundle bundle){
-        Inmueble in = (Inmueble)bundle.getParcelable("inmueble");
+        Inmueble in = (Inmueble)bundle.getSerializable("inmueble");
         Contrato c = ApiClient.getApi().obtenerContratoVigente(in);
         mLista.setValue(ApiClient.getApi().obtenerPagos(c));
     }

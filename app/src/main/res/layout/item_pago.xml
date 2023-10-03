@@ -9,70 +9,131 @@
     app:cardElevation="5dp"
     app:cardBackgroundColor="#FFF">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        tools:context=".ui.contratos.ContratoFragment">
 
         <TextView
-            android:id="@+id/tvItemPagoCodigo"
-            android:layout_width="match_parent"
+            android:id="@+id/tvItemLabelPagoCodigo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Código Pago:"
+            android:layout_marginLeft="10dp"
+            android:text="Código Pago: "
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvItemPagoNumero"
-            android:layout_width="match_parent"
+            android:id="@+id/tvItemPagoCodigo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Número de pago:"
+            android:hint="Código Pago"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvItemLabelPagoCodigo" />
+
+        <TextView
+            android:id="@+id/tvItemLabelPagoNumero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Número de pago: "
+            android:textColor="@color/black"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemLabelPagoCodigo" />
+
+        <TextView
+            android:id="@+id/tvItemPagoNumero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Número de pago"
+            android:textColor="@color/black"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvItemLabelPagoNumero"
             app:layout_constraintTop_toBottomOf="@+id/tvItemPagoCodigo" />
 
         <TextView
-            android:id="@+id/tvItemPagoCodigoContrato"
-            android:layout_width="match_parent"
+            android:id="@+id/tvItemLabelPagoCodigoContrato"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Código de contrato:"
+            android:layout_marginLeft="10dp"
+            android:text="Código de contrato: "
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemLabelPagoNumero" />
+
+        <TextView
+            android:id="@+id/tvItemPagoCodigoContrato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Código de contrato"
+            android:textColor="@color/black"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvItemLabelPagoCodigoContrato"
             app:layout_constraintTop_toBottomOf="@+id/tvItemPagoNumero" />
 
         <TextView
-            android:id="@+id/tvItemPagoImporte"
-            android:layout_width="match_parent"
+            android:id="@+id/tvItemLabelPagoImporte"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Importe"
+            android:layout_marginLeft="10dp"
+            android:text="Importe: "
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemLabelPagoCodigoContrato" />
+
+        <TextView
+            android:id="@+id/tvItemPagoImporte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Importe"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvItemLabelPagoImporte"
             app:layout_constraintTop_toBottomOf="@+id/tvItemPagoCodigoContrato" />
 
         <TextView
-            android:id="@+id/tvitemPagoFecha"
-            android:layout_width="match_parent"
+            android:id="@+id/tvItemLabelPagoFecha"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Fecha de pago"
+            android:layout_marginLeft="10dp"
+            android:text="Fecha de pago: "
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvItemPagoImporte" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tvItemPagoFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Fecha de pago"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvItemLabelPagoFecha"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemPagoImporte" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>>
 </androidx.cardview.widget.CardView>

@@ -29,26 +29,21 @@ public class HomeViewModel extends AndroidViewModel {
     private Context context;
     private MutableLiveData<MapaActual> mMapa;
     private static final LatLng INMOBILIARIA = new LatLng(-33.30060128731086, -66.33109902834182);
-
     public HomeViewModel(@NonNull Application application) {
         super(application);
         context = application.getApplicationContext();
     }
-
     public LiveData<MapaActual> getMMapa(){
         if( mMapa == null ){
             mMapa = new MutableLiveData<>();
         }
         return mMapa;
     }
-
     public void obtenerMapa(){
         MapaActual ma = new MapaActual();
         mMapa.setValue(ma);
     }
-
     public class MapaActual implements OnMapReadyCallback {
-
         @Override
         public void onMapReady(@NonNull GoogleMap googleMap) {
             if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED

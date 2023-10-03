@@ -18,21 +18,23 @@ import com.google.android.gms.common.api.Api;
 public class InmuebleViewModel extends AndroidViewModel {
     private Context context;
     private MutableLiveData<Inmueble> mInmueble;
-
     public InmuebleViewModel(@NonNull Application application) {
         super(application);
         context = application.getApplicationContext();
     }
-
     public LiveData<Inmueble> getMInmueble() {
         if(mInmueble == null){
             mInmueble = new MutableLiveData<>();
         }
         return mInmueble;
     }
-
     public void obtenerInmueble(Bundle bundle){
         Inmueble i = ApiClient.getApi().obtnerPropiedades().get(Integer.parseInt(bundle.getString("id")));
+        mInmueble.setValue(i);
+    }
+    public void actualizarInmueble(Inmueble i){
+        i.setEstado(!i.isEstado());
+        ApiClient.getApi().actualizarInmueble(i);
         mInmueble.setValue(i);
     }
 }
