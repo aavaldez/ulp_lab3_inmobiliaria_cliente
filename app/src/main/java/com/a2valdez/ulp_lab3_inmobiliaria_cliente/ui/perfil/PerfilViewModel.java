@@ -2,17 +2,19 @@ package com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.perfil;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.R;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Propietario;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.request.ApiClient;
+import com.google.android.material.navigation.NavigationView;
 
 public class PerfilViewModel extends AndroidViewModel {
     private Context context;
@@ -37,8 +39,8 @@ public class PerfilViewModel extends AndroidViewModel {
         }
     }
 
-    public void GuardarPropietario(String id, String dni, String nombre, String apellido, String email, String password, String telefono){
-        Propietario p = new Propietario(Integer.parseInt(id), Long.parseLong(dni), nombre, apellido, email, password, telefono, 1);
+    public void GuardarPropietario(String id, String dni, String nombre, String apellido, String email, String password, String telefono, int avatar){
+        Propietario p = new Propietario(Integer.parseInt(id), Long.parseLong(dni), nombre, apellido, email, password, telefono, avatar);
         ApiClient.getApi().actualizarPerfil(p);
         mPropietario.setValue(p);
     }
