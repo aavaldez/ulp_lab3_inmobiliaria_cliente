@@ -66,7 +66,7 @@ public class PerfilFragment extends Fragment {
                 );
             }
         });
-        mv.LeerUsuario();
+        mv.LeerUsuarioApi();
         return root;
     }
 }
