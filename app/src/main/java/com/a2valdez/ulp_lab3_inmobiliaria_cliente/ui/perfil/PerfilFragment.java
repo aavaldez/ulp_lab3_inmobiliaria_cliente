@@ -1,23 +1,18 @@
 package com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.perfil;
 
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.a2valdez.ulp_lab3_inmobiliaria_cliente.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.databinding.FragmentPerfilBinding;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Propietario;
-import com.google.android.material.navigation.NavigationView;
 
 public class PerfilFragment extends Fragment {
     private FragmentPerfilBinding binding;
@@ -49,24 +44,42 @@ public class PerfilFragment extends Fragment {
                 binding.ivPerfilAvatar.setImageResource(propietario.getAvatar());
             }
         });
+        mv.getMEsEditable().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean esEditable) {
+                binding.etPerfilDni.setEnabled(esEditable);
+                binding.etPerfilApellido.setEnabled(esEditable);
+                binding.etPerfilNombre.setEnabled(esEditable);
+                binding.etPerfilEmail.setEnabled(esEditable);
+                binding.etPerfilPassword.setEnabled(esEditable);
+                binding.etPerfilTelefono.setEnabled(esEditable);
+
+                binding.btPerfilEditar.setVisibility(esEditable ? View.GONE : View.VISIBLE);
+                binding.btPerfilGuardar.setVisibility(esEditable ? View.VISIBLE : View.GONE);
+            }
+        });
         binding.btPerfilGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Crear Propietario
-                //Propietario p = new Propietario();
-                mv.GuardarPropietario(
-                        binding.etPerfilId.getText().toString(),
-                        binding.etPerfilDni.getText().toString(),
+                Propietario p = new Propietario(Integer.parseInt(binding.etPerfilId.getText().toString()),
+                        Long.parseLong(binding.etPerfilDni.getText().toString()),
                         binding.etPerfilNombre.getText().toString(),
                         binding.etPerfilApellido.getText().toString(),
                         binding.etPerfilEmail.getText().toString(),
                         binding.etPerfilPassword.getText().toString(),
                         binding.etPerfilTelefono.getText().toString(),
-                        propietarioActual.getAvatar()
-                );
+                        propietarioActual.getAvatar());
+                mv.GuardarPropietario(p);
             }
         });
-        mv.LeerUsuarioApi();
+        binding.btPerfilEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mv.CambiarEstadoEdicion();
+            }
+        });
+        mv.LeerUsuario();
         return root;
     }
 }

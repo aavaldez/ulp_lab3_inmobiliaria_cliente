@@ -36,38 +36,25 @@ public class LoginActivityViewModel extends AndroidViewModel {
     }
 
     public void Login(String email, String password){
-        String mensaje;
-        Propietario propietario = ApiClient.getApi().login(email, password);
-        if( propietario != null ){
-            //Cargar activity
-            Intent intent = new Intent(context, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-        } else {
-            mensaje = "Usuario o contraseña incorrecto";
-            mMensaje.setValue(mensaje);
-        }
-    }
-
-    public void LoginApí(String email, String password){
         ApiClientRetrofit.ApiInmobiliaria apiInmobiliaria = ApiClientRetrofit.getApiInmobiliaria();
         Call<String> token = apiInmobiliaria.login(email, password);
         token.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.isSuccessful()){
-                    Log.d("salida", response.body());
                     ApiClientRetrofit.guardarToken(context, "Bearer "+response.body());
                     Intent intent = new Intent(context, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 } else{
-                    Log.d("salida respuesta", response.message());
+                    //Log.d("salida", response.message());
+                    Toast.makeText(context, "Error al intentar autenticar", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d("salida", t.getMessage());
+                //Log.d("salida", t.getMessage());
+                Toast.makeText(context, "Error al intentar autenticar", Toast.LENGTH_SHORT).show();
             }
         });
     }
