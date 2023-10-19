@@ -51,10 +51,10 @@ public class ApiClientRetrofit {
         @GET("Propietarios/Perfil")
         Call<Propietario> obtenerPerfil(@Header("Authorization") String token);
 
-        @POST("Propietarios/Editar")
+        @PUT("Propietarios/Editar")
         Call<Propietario> editarPerfil(@Header("Authorization") String token, @Body Propietario propietario);
 
-        @GET("Inmuebles/")
+        @GET("Inmuebles/Todos")
         Call<List<Inmueble>> obtenerInmuebles(@Header("Authorization") String token);
 
         @PUT("inmuebles/cambiar_estado/{id}")
