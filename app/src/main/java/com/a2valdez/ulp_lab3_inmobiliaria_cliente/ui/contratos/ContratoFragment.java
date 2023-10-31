@@ -37,13 +37,13 @@ public class ContratoFragment extends Fragment {
         mv.getMContrato().observe(getViewLifecycleOwner(), new Observer<Contrato>() {
             @Override
             public void onChanged(Contrato c) {
-                binding.etContratoCodigo.setText(String.valueOf(c.getIdContrato()));
+                binding.etContratoCodigo.setText(String.valueOf(c.getId()));
                 binding.etContratoFechaInicio.setText(c.getFechaInicio());
                 binding.etContratoFechaFin.setText(c.getFechaFin());
                 binding.etContratoMonto.setText(String.valueOf(c.getMontoAlquiler()));
                 binding.etContratoInquilino.setText(c.getInquilino().getApellido());
                 binding.etContratoInmueble.setText(c.getInmueble().getDireccion());
-                binding.etContratoInmuebleId.setText(String.valueOf(c.getInmueble().getIdInmueble()));
+                binding.etContratoInmuebleId.setText(String.valueOf(c.getInmueble().getId()));
                 binding.etContratoPagos.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

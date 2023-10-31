@@ -9,18 +9,18 @@ public class Propietario {
     private String nombre;
     private String apellido;
     private String email;
-    private String contraseña;
+    private String password;
     private String telefono;
     private int avatar;
 
     public Propietario(){}
-    public Propietario(int id, Long dni, String nombre, String apellido, String email, String contraseña, String telefono, int avatar) {
+    public Propietario(int id, Long dni, String nombre, String apellido, String email, String password, String telefono, int avatar) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
-        this.contraseña = contraseña;
+        this.password = password;
         this.telefono = telefono;
         this.avatar=avatar;
     }
@@ -65,12 +65,12 @@ public class Propietario {
         this.email = email;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setPassword(String contraseña) {
+        this.password = contraseña;
     }
 
     public String getTelefono() {

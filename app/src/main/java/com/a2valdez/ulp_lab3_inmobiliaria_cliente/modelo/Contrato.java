@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Contrato implements Serializable {
 
-    private int idContrato;
+    private int id;
     private String fechaInicio;
     private String fechaFin;
     private double montoAlquiler;
@@ -13,8 +13,8 @@ public class Contrato implements Serializable {
     private Inmueble inmueble;
 
     public Contrato() {}
-    public Contrato(int idContrato, String fechaInicio, String fechaFin, double montoAlquiler, Inquilino inquilino, Inmueble inmueble) {
-        this.idContrato = idContrato;
+    public Contrato(int id, String fechaInicio, String fechaFin, double montoAlquiler, Inquilino inquilino, Inmueble inmueble) {
+        this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.montoAlquiler = montoAlquiler;
@@ -22,12 +22,12 @@ public class Contrato implements Serializable {
         this.inmueble = inmueble;
     }
 
-    public int getIdContrato() {
-        return idContrato;
+    public int getId() {
+        return id;
     }
 
-    public void setIdContrato(int idContrato) {
-        this.idContrato = idContrato;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFechaInicio() {
@@ -76,11 +76,11 @@ public class Contrato implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Contrato contrato = (Contrato) o;
-        return idContrato == contrato.idContrato;
+        return id == contrato.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idContrato);
+        return Objects.hash(id);
     }
 }

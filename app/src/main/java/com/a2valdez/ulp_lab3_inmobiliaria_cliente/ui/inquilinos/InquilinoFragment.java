@@ -32,7 +32,7 @@ public class InquilinoFragment extends Fragment {
         mv.getMInquilino().observe(getViewLifecycleOwner(), new Observer<Inquilino>() {
             @Override
             public void onChanged(Inquilino i) {
-                binding.etInquilinoId.setText(String.valueOf(i.getIdInquilino()));
+                binding.etInquilinoId.setText(String.valueOf(i.getId()));
                 binding.etInquilinoNombre.setText(i.getNombre());
                 binding.etInquilinoApellido.setText(i.getApellido());
                 binding.etInquilinoDni.setText(String.valueOf(i.getDNI()));

@@ -34,7 +34,7 @@ public class InmuebleFragment extends Fragment {
         mv.getMInmueble().observe(getViewLifecycleOwner(), new Observer<Inmueble>() {
             @Override
             public void onChanged(Inmueble i) {
-                binding.etInmuebleCodigo.setText(String.valueOf(i.getIdInmueble()));
+                binding.etInmuebleCodigo.setText(String.valueOf(i.getId()));
                 binding.etInmuebleAmbientes.setText(String.valueOf(i.getAmbientes()));
                 binding.etInmuebleDireccion.setText(i.getDireccion());
                 binding.etInmueblePrecio.setText(String.valueOf(i.getPrecio()));
