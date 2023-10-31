@@ -13,6 +13,7 @@ import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -21,8 +22,10 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public class ApiClientRetrofit {
@@ -59,6 +62,10 @@ public class ApiClientRetrofit {
 
         @PUT("inmuebles/cambiar_estado/{id}")
         Call<Inmueble> cambiarEstado(@Header("Authorization") String token, @Path("id") int id, @Body boolean estado);
+
+        @Multipart
+        @POST("inmuebles/Crear/")
+        Call<Inmueble> crearInmueble(@Header("Authorization") String token, @Part MultipartBody.Part imagenFile);
 
         @GET("inmuebles/alquilados")
         Call<List<Inmueble>> obtenerInmueblesAlquiladas(@Header("Authorization") String token);

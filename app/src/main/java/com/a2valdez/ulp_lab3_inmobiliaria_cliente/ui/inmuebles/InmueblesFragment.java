@@ -31,6 +31,12 @@ public class InmueblesFragment extends Fragment {
         InmueblesViewModel mv = new ViewModelProvider(this).get(InmueblesViewModel.class);
         binding = FragmentInmueblesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        binding.btNuevoInmueble.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mv.NuevoInmueble();
+            }
+        });
         mv.getmLista().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {
             @Override
             public void onChanged(List<Inmueble> listaActual) {

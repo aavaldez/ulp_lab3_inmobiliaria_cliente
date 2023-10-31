@@ -39,7 +39,7 @@ public class PerfilFragment extends Fragment {
                 binding.etPerfilApellido.setText(propietario.getApellido());
                 binding.etPerfilNombre.setText(propietario.getNombre());
                 binding.etPerfilEmail.setText(propietario.getEmail());
-                binding.etPerfilPassword.setText(propietario.getContraseña());
+                binding.etPerfilPassword.setText(propietario.getPassword());
                 binding.etPerfilTelefono.setText(propietario.getTelefono());
                 binding.ivPerfilAvatar.setImageResource(propietario.getAvatar());
             }

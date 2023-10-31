@@ -2,6 +2,7 @@ package com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.inmuebles;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -52,5 +53,9 @@ public class InmueblesViewModel extends AndroidViewModel {
                 Log.d("salida", t.getMessage());
             }
         });
+    }
+
+    public void NuevoInmueble(){
+
     }
 }
