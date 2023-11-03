@@ -30,8 +30,8 @@ import retrofit2.http.Path;
 
 public class ApiClientRetrofit {
 
-    //private static final String URLBASE = "http://192.168.100.2:5000/";
-    private static final String URLBASE = "http://192.168.1.191:5000/";
+    private static final String URLBASE = "http://192.168.100.2:5000/";
+    //private static final String URLBASE = "http://192.168.1.191:5000/";
 
     private static ApiInmobiliaria apiInmobilaria;
 
@@ -61,14 +61,17 @@ public class ApiClientRetrofit {
         @GET("Inmuebles/Todos")
         Call<List<Inmueble>> obtenerInmuebles(@Header("Authorization") String token);
 
-        @PUT("inmuebles/cambiar_estado/{id}")
+        @GET("Inmuebles/Obtener/{id}")
+        Call<Inmueble> obtenerInmueble(@Header("Authorization") String token,  @Path("id") int id);
+
+        @PUT("Inmuebles/Cambiar_Estado/{id}")
         Call<Inmueble> cambiarEstado(@Header("Authorization") String token, @Path("id") int id, @Body boolean estado);
 
         @Multipart
         @POST("inmuebles/Crear/")
         Call<Inmueble> crearInmueble(@Header("Authorization") String token, @Part MultipartBody.Part imagenFile);
 
-        @GET("inmuebles/alquilados")
+        @GET("Inmuebles/Alquilados")
         Call<List<Inmueble>> obtenerInmueblesAlquiladas(@Header("Authorization") String token);
 
         @GET("Inquilinos/Obtener/{id}")

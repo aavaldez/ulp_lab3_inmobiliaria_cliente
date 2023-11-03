@@ -38,9 +38,9 @@ public class ContratoFragment extends Fragment {
             @Override
             public void onChanged(Contrato c) {
                 binding.etContratoCodigo.setText(String.valueOf(c.getId()));
-                binding.etContratoFechaInicio.setText(c.getFechaInicio());
-                binding.etContratoFechaFin.setText(c.getFechaFin());
-                binding.etContratoMonto.setText(String.valueOf(c.getMontoAlquiler()));
+                binding.etContratoFechaInicio.setText(c.getDesde());
+                binding.etContratoFechaFin.setText(c.getHasta());
+                binding.etContratoMonto.setText(String.valueOf(c.getValor()));
                 binding.etContratoInquilino.setText(c.getInquilino().getApellido());
                 binding.etContratoInmueble.setText(c.getInmueble().getDireccion());
                 binding.etContratoInmuebleId.setText(String.valueOf(c.getInmueble().getId()));
@@ -48,7 +48,7 @@ public class ContratoFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable("inmueble", c.getInmueble());
+                        bundle.putInt("id", c.getId());
                         Navigation.findNavController(v).navigate(R.id.pagosFragment, bundle);
                     }
                 });

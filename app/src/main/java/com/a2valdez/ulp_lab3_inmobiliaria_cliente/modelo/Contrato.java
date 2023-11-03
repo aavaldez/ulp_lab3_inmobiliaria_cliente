@@ -6,18 +6,18 @@ import java.util.Objects;
 public class Contrato implements Serializable {
 
     private int id;
-    private String fechaInicio;
-    private String fechaFin;
-    private double montoAlquiler;
+    private String desde;
+    private String hasta;
+    private double valor;
     private Inquilino inquilino;
     private Inmueble inmueble;
 
     public Contrato() {}
-    public Contrato(int id, String fechaInicio, String fechaFin, double montoAlquiler, Inquilino inquilino, Inmueble inmueble) {
+    public Contrato(int id, String fechaInicio, String fechaFin, double valor, Inquilino inquilino, Inmueble inmueble) {
         this.id = id;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.montoAlquiler = montoAlquiler;
+        this.desde = fechaInicio;
+        this.hasta = fechaFin;
+        this.valor = valor;
         this.inquilino = inquilino;
         this.inmueble = inmueble;
     }
@@ -30,28 +30,28 @@ public class Contrato implements Serializable {
         this.id = id;
     }
 
-    public String getFechaInicio() {
-        return fechaInicio;
+    public String getDesde() {
+        return desde;
     }
 
-    public void setFechaInicio(String fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public void setDesde(String desde) {
+        this.desde = desde;
     }
 
-    public String getFechaFin() {
-        return fechaFin;
+    public String getHasta() {
+        return hasta;
     }
 
-    public void setFechaFin(String fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setHasta(String hasta) {
+        this.hasta = hasta;
     }
 
-    public double getMontoAlquiler() {
-        return montoAlquiler;
+    public double getValor() {
+        return valor;
     }
 
-    public void setMontoAlquiler(double montoAlquiler) {
-        this.montoAlquiler = montoAlquiler;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
 

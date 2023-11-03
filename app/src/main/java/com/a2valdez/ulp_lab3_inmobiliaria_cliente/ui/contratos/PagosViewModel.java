@@ -15,8 +15,13 @@ import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Contrato;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Inmueble;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Pago;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.request.ApiClient;
+import com.a2valdez.ulp_lab3_inmobiliaria_cliente.request.ApiClientRetrofit;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PagosViewModel extends AndroidViewModel {
     private Context context;
@@ -35,8 +40,23 @@ public class PagosViewModel extends AndroidViewModel {
     }
 
     public void obtenerPagos(Bundle bundle){
-        Inmueble in = (Inmueble)bundle.getSerializable("inmueble");
-        Contrato c = ApiClient.getApi().obtenerContratoVigente(in);
-        mLista.setValue(ApiClient.getApi().obtenerPagos(c));
+        String token = ApiClientRetrofit.leerToken(context);
+        ApiClientRetrofit.ApiInmobiliaria apiInmobiliaria = ApiClientRetrofit.getApiInmobiliaria();
+        Call<List<Pago>> call = apiInmobiliaria.obtenerPagosPorContrato(token, bundle.getInt("id"));
+        call.enqueue(new Callback<List<Pago>>() {
+            @Override
+            public void onResponse(Call<List<Pago>> call, Response<List<Pago>> response) {
+                Log.d("salida", response.raw().toString());
+                if(response.isSuccessful()){
+                    mLista.postValue(response.body());
+                } else{
+                    Log.d("salida", response.message());
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Pago>> call, Throwable t) {
+                Log.d("salida", t.getMessage());
+            }
+        });
     }
 }

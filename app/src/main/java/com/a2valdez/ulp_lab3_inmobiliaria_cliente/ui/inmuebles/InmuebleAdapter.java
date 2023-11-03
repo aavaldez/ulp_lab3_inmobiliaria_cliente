@@ -38,7 +38,7 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.direccion.setText(inmuebles.get(position).getDireccion());
         holder.precio.setText(String.valueOf(inmuebles.get(position).getPrecio()));
-        holder.id.setText(String.valueOf(position));
+        holder.id.setText(String.valueOf(inmuebles.get(position).getId()));
     }
     @Override
     public int getItemCount() {
