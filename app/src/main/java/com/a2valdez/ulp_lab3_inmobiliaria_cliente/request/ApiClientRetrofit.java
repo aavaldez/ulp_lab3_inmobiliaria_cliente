@@ -31,8 +31,8 @@ import retrofit2.http.Path;
 
 public class ApiClientRetrofit {
 
-    private static final String URLBASE = "http://192.168.100.2:5000/";
-    //private static final String URLBASE = "http://192.168.1.191:5000/";
+    //private static final String URLBASE = "http://192.168.100.2:5000/";
+    private static final String URLBASE = "http://192.168.1.191:5000/";
 
     private static ApiInmobiliaria apiInmobilaria;
 

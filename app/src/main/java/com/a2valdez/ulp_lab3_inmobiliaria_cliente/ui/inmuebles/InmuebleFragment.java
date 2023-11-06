@@ -24,6 +24,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 public class InmuebleFragment extends Fragment {
     private FragmentInmuebleBinding binding;
     private InmuebleViewModel mv;
+    //private static final String URLBASE = "http://192.168.100.2:5000/";
+    private static final String URLBASE = "http://192.168.1.191:5000/";
     public static InmuebleFragment newInstance() {
         return new InmuebleFragment();
     }
@@ -43,7 +45,7 @@ public class InmuebleFragment extends Fragment {
                 binding.etInmuebleUso.setText(i.getUso());
                 binding.etInmuebleTipo.setText(i.getTipo());
                 String imagen = i.getImagen().replace("\\","/");
-                String url ="http://192.168.100.2:5000"+imagen;
+                String url = URLBASE+imagen;
                 Glide.with(getContext())
                         .load(url)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
