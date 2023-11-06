@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.R;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.databinding.FragmentInmuebleBinding;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Inmueble;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 public class InmuebleFragment extends Fragment {
     private FragmentInmuebleBinding binding;
@@ -40,6 +42,12 @@ public class InmuebleFragment extends Fragment {
                 binding.etInmueblePrecio.setText(String.valueOf(i.getPrecio()));
                 binding.etInmuebleUso.setText(i.getUso());
                 binding.etInmuebleTipo.setText(i.getTipo());
+                String imagen = i.getImagen().replace("\\","/");
+                String url ="http://192.168.100.2:5000"+imagen;
+                Glide.with(getContext())
+                        .load(url)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(binding.ivInmueble);
                 binding.swInmuebleDisponible.setChecked(i.isEstado());
                 binding.swInmuebleDisponible.setOnClickListener(new View.OnClickListener() {
                     @Override

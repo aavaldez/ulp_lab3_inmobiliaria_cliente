@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,7 +36,8 @@ public class InmueblesFragment extends Fragment {
         binding.btNuevoInmueble.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mv.NuevoInmueble();
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.action_nav_inmuebles_to_nuevoInmuebleFragment);
             }
         });
         mv.getmLista().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {

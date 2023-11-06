@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,16 +17,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Inmueble;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.R;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
 public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHolder> {
     private List<Inmueble> inmuebles;
-    private Context contexto;
+    private Context context;
     private LayoutInflater li;
     public InmuebleAdapter(List<Inmueble> inmuebles, Context contexto, LayoutInflater li) {
         this.inmuebles = inmuebles;
-        this.contexto = contexto;
+        this.context = contexto;
         this.li = li;
     }
     @NonNull
@@ -39,6 +42,12 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
         holder.direccion.setText(inmuebles.get(position).getDireccion());
         holder.precio.setText(String.valueOf(inmuebles.get(position).getPrecio()));
         holder.id.setText(String.valueOf(inmuebles.get(position).getId()));
+        String imagen = inmuebles.get(position).getImagen().replace("\\","/");
+        String url ="http://192.168.100.2:5000"+imagen;
+        Glide.with(context)
+                .load(url)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.imagen);
     }
     @Override
     public int getItemCount() {
@@ -48,11 +57,13 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
         private TextView direccion;
         private TextView precio;
         private EditText id;
+        private ImageView imagen;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             direccion = itemView.findViewById(R.id.tvItemInmuebleDireccion);
             precio = itemView.findViewById(R.id.tvItemInmueblePrecio);
             id = itemView.findViewById(R.id.etItemInmuebleId);
+            imagen = itemView.findViewById(R.id.ivItemInmueble);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @SuppressLint("ResourceType")
                 @Override

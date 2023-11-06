@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_nav_inmuebles_to_inmuebleFragment"
             app:destination="@id/inmuebleFragment" />
+        <action
+            android:id="@+id/action_nav_inmuebles_to_nuevoInmuebleFragment"
+            app:destination="@id/nuevoInmuebleFragment" />
     </fragment>
 
     <fragment
@@ -34,6 +37,16 @@
         tools:layout="@layout/fragment_inmueble" >
         <action
             android:id="@+id/action_inmuebleFragment_to_nav_inmuebles"
+            app:destination="@id/nav_inmuebles" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nuevoInmuebleFragment"
+        android:name="com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.inmuebles.NuevoInmuebleFragment"
+        android:label="@string/menu_inmuebles"
+        tools:layout="@layout/fragment_nuevo_inmueble" >
+        <action
+            android:id="@+id/action_nuevoInmuebleFragment_to_nav_inmuebles"
             app:destination="@id/nav_inmuebles" />
     </fragment>
 
