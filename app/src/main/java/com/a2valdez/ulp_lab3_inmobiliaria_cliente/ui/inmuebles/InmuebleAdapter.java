@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Inmueble;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.R;
+import com.a2valdez.ulp_lab3_inmobiliaria_cliente.request.ApiClientRetrofit;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
@@ -27,8 +28,6 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
     private List<Inmueble> inmuebles;
     private Context contexto;
     private LayoutInflater li;
-    private static final String URLBASE = "http://192.168.100.2:5000/";
-    //private static final String URLBASE = "http://192.168.1.191:5000/";
 
     public InmuebleAdapter(List<Inmueble> inmuebles, Context contexto, LayoutInflater li) {
         this.inmuebles = inmuebles;
@@ -47,7 +46,7 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
         holder.precio.setText(String.valueOf(inmuebles.get(position).getPrecio()));
         holder.id.setText(String.valueOf(inmuebles.get(position).getId()));
         String imagen = inmuebles.get(position).getImagen().replace("\\","/");
-        String url = URLBASE+imagen;
+        String url = ApiClientRetrofit.URLBASE+imagen;
         Glide.with(contexto)
                 .load(url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.databinding.FragmentPerfilBinding;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Propietario;
+import com.a2valdez.ulp_lab3_inmobiliaria_cliente.request.ApiClientRetrofit;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
@@ -21,8 +22,7 @@ public class PerfilFragment extends Fragment {
     private FragmentPerfilBinding binding;
     private PerfilViewModel mv;
     Propietario propietarioActual = null;
-    private static final String URLBASE = "http://192.168.100.2:5000/";
-    //private static final String URLBASE = "http://192.168.1.191:5000/";
+
     public static PerfilFragment newInstance() {
         return new PerfilFragment();
     }
@@ -46,7 +46,7 @@ public class PerfilFragment extends Fragment {
                 binding.etPerfilTelefono.setText(propietario.getTelefono());
 
                 String imagen = propietario.getAvatar().replace("\\","/");
-                String url = URLBASE+imagen;
+                String url = ApiClientRetrofit.URLBASE+imagen;
                 Glide.with(getActivity())
                         .load(url)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)

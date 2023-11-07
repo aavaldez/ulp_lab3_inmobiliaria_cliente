@@ -28,8 +28,7 @@ public class InquilinoAdapter extends RecyclerView.Adapter<InquilinoAdapter.View
     private List<Inmueble> inmuebles;
     private Context contexto;
     private LayoutInflater li;
-    private static final String URLBASE = "http://192.168.100.2:5000/";
-    //private static final String URLBASE = "http://192.168.1.191:5000/";
+
     public InquilinoAdapter(List<Inmueble> inmuebles, Context contexto, LayoutInflater li) {
         this.inmuebles = inmuebles;
         this.contexto = contexto;
@@ -46,7 +45,7 @@ public class InquilinoAdapter extends RecyclerView.Adapter<InquilinoAdapter.View
         holder.direccion.setText(inmuebles.get(position).getDireccion());
         holder.id.setText(String.valueOf(inmuebles.get(position).getId()));
         String imagen = inmuebles.get(position).getImagen().replace("\\","/");
-        String url = URLBASE+imagen;
+        String url = ApiClientRetrofit.URLBASE+imagen;
         Glide.with(contexto)
                 .load(url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

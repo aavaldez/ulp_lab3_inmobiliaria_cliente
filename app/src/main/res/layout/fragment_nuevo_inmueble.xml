@@ -128,8 +128,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spNuevoInmuebleUso" />
 
-        <EditText
-            android:id="@+id/etNuevoInmuebleTipo"
+        <Spinner
+            android:id="@+id/spNuevoInmuebleTipo"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:ems="10"
@@ -140,7 +140,8 @@
             android:hint="Tipo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNuevoInmuebleTipo" />
+            app:layout_constraintTop_toBottomOf="@+id/tvNuevoInmuebleTipo"
+            android:spinnerMode="dropdown" />
 
         <ImageView
             android:id="@+id/ivNuevoInmueble"
@@ -151,7 +152,7 @@
             android:src="@drawable/sample"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etNuevoInmuebleTipo" />
+            app:layout_constraintTop_toBottomOf="@+id/spNuevoInmuebleTipo" />
 
         <Button
             android:id="@+id/btNuevoInmuebleCrear"

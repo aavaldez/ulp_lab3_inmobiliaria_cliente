@@ -3,6 +3,7 @@ package com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.inmuebles;
 import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,11 +32,12 @@ public class NuevoInmuebleViewModel extends AndroidViewModel {
         context = application.getApplicationContext();
     }
     public void crearInmueble(Inmueble inmueble, Uri uri){
-        if(inmueble.getDireccion()==null ||
-                inmueble.getTipo()==null ||
-                inmueble.getUso()==null ||
-                inmueble.getPrecio()==0 ||
-                uri ==null){
+        if(inmueble.getAmbientes() == 0 ||
+                inmueble.getDireccion() == null ||
+                inmueble.getTipo() == null ||
+                inmueble.getUso() == null ||
+                inmueble.getPrecio() == 0 ||
+                uri == null){
             Toast.makeText(context,"Todos los campos son obligatorios",Toast.LENGTH_LONG).show();
             return;
         }
@@ -46,6 +48,7 @@ public class NuevoInmuebleViewModel extends AndroidViewModel {
         RequestBody precio = RequestBody.create(MediaType.parse("application/json"),inmueble.getPrecio()+"");
 
         String path = RealPathUtil.getRealPath(context,uri);
+
         File file = new File(path);
         RequestBody fileBody = RequestBody.create(MediaType.parse("multiform/form-data"),file);
         MultipartBody.Part imagen = MultipartBody.Part.createFormData("ImagenFileName",file.getName(),fileBody);

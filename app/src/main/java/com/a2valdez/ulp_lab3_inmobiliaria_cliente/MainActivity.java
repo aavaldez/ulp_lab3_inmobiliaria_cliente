@@ -19,6 +19,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.databinding.ActivityMainBinding;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Propietario;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.request.ApiClient;
+import com.a2valdez.ulp_lab3_inmobiliaria_cliente.request.ApiClientRetrofit;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.navigation.NavigationView;
@@ -29,9 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     NavigationView navigationView;
     private MainActivityViewModel mv;
-    private static final String URLBASE = "http://192.168.100.2:5000/";
-    //private static final String URLBASE = "http://192.168.1.191:5000/";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 nombreProp.setText(propietario.getNombre()+ " " + propietario.getApellido());
                 mailProp.setText(propietario.getEmail());
                 String imagen = propietario.getAvatar().replace("\\","/");
-                String url = URLBASE+imagen;
+                String url = ApiClientRetrofit.URLBASE+imagen;
                 Glide.with(getApplicationContext())
                         .load(url)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
