@@ -19,6 +19,9 @@ import com.a2valdez.ulp_lab3_inmobiliaria_cliente.databinding.FragmentContratoBi
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Contrato;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Inmueble;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class ContratoFragment extends Fragment {
 
     private FragmentContratoBinding binding;
@@ -38,8 +41,10 @@ public class ContratoFragment extends Fragment {
             @Override
             public void onChanged(Contrato c) {
                 binding.etContratoCodigo.setText(String.valueOf(c.getId()));
-                binding.etContratoFechaInicio.setText(c.getDesde());
-                binding.etContratoFechaFin.setText(c.getHasta());
+                LocalDate fechaDesde = LocalDate.parse(c.getDesde(), DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+                binding.etContratoFechaInicio.setText(fechaDesde.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                LocalDate fechaHasta = LocalDate.parse(c.getHasta(), DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+                binding.etContratoFechaFin.setText(fechaHasta.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 binding.etContratoMonto.setText(String.valueOf(c.getValor()));
                 binding.etContratoInquilino.setText(c.getInquilino().getApellido());
                 binding.etContratoInmueble.setText(c.getInmueble().getDireccion());

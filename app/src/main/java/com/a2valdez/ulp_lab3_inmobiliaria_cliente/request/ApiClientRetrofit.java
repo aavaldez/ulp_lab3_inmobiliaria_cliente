@@ -31,8 +31,8 @@ import retrofit2.http.Path;
 
 public class ApiClientRetrofit {
 
-    //public static final String URLBASE = "http://192.168.100.2:5000/";
-    public static final String URLBASE = "http://192.168.1.191:5000/";
+    public static final String URLBASE = "http://192.168.100.2:5000/";
+    //public static final String URLBASE = "http://192.168.1.191:5000/";
     private static ApiInmobiliaria apiInmobilaria;
 
     public static ApiInmobiliaria getApiInmobiliaria(){
@@ -75,7 +75,7 @@ public class ApiClientRetrofit {
                                      @Part("Tipo") RequestBody tipo,
                                      @Part("Uso") RequestBody uso,
                                      @Part("Precio") RequestBody precio,
-                                     MultipartBody.Part imagen
+                                     @Part MultipartBody.Part imagen
         );
 
         @GET("Inmuebles/Alquilados")

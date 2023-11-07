@@ -34,6 +34,8 @@ import com.a2valdez.ulp_lab3_inmobiliaria_cliente.databinding.FragmentNuevoInmue
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Inmueble;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Propietario;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.request.ApiClientRetrofit;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 public class NuevoInmuebleFragment extends Fragment {
     private FragmentNuevoInmuebleBinding binding;
@@ -80,6 +82,14 @@ public class NuevoInmuebleFragment extends Fragment {
         //set the spinners adapter to the previously created one.
         ddTipo.setAdapter(adapterTipo);
 
+        mv.getMInmueble().observe(getViewLifecycleOwner(), new Observer<Inmueble>() {
+            @Override
+            public void onChanged(Inmueble i) {
+                NavController navController = Navigation.findNavController(root);
+                navController.navigate(R.id.action_nuevoInmuebleFragment_to_nav_inmuebles);
+            }
+        });
+
         binding.btNuevoInmuebleCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,7 +100,6 @@ public class NuevoInmuebleFragment extends Fragment {
                     inmueble.setTipo(binding.spNuevoInmuebleTipo.getSelectedItem().toString());
                     inmueble.setUso(binding.spNuevoInmuebleUso.getSelectedItem().toString());
                     inmueble.setPrecio(Double.parseDouble(binding.etNuevoInmueblePrecio.getText().toString()));
-                    Log.d("salida", selectedImageUri.toString());
                     mv.crearInmueble(inmueble, selectedImageUri);
                 } else {
                     Toast.makeText(getContext(), "Debe Seleccionar una imagen", Toast.LENGTH_LONG).show();

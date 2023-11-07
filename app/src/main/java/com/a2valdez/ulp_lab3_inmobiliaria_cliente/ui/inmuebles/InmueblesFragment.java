@@ -33,7 +33,7 @@ public class InmueblesFragment extends Fragment {
         InmueblesViewModel mv = new ViewModelProvider(this).get(InmueblesViewModel.class);
         binding = FragmentInmueblesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        binding.btNuevoInmueble.setOnClickListener(new View.OnClickListener() {
+        binding.fbNuevoInmueble.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NavController navController = Navigation.findNavController(v);

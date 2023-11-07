@@ -18,6 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.R;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Pago;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class PagoAdapter extends RecyclerView.Adapter<PagoAdapter.ViewHolder> {
@@ -40,7 +43,10 @@ public class PagoAdapter extends RecyclerView.Adapter<PagoAdapter.ViewHolder> {
         holder.numero.setText(String.valueOf(pagos.get(position).getNumero()));
         holder.codigoContrato.setText(String.valueOf(pagos.get(position).getContrato().getId()));
         holder.importe.setText(String.valueOf(pagos.get(position).getImporte()));
-        holder.fecha.setText(pagos.get(position).getFechaDePago());
+
+        LocalDate fechaPago = LocalDate.parse(pagos.get(position).getFecha(), DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        holder.fecha.setText(fechaPago.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+
         holder.id.setText(String.valueOf(pagos.get(position).getId()));
     }
     @Override

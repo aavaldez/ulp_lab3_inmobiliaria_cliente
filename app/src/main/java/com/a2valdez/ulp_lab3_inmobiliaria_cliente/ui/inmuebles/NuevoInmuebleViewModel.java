@@ -25,7 +25,6 @@ import retrofit2.Response;
 
 public class NuevoInmuebleViewModel extends AndroidViewModel {
     private Context context;
-
     private MutableLiveData<Inmueble> mInmueble;
     public NuevoInmuebleViewModel(@NonNull Application application) {
         super(application);
@@ -49,6 +48,8 @@ public class NuevoInmuebleViewModel extends AndroidViewModel {
 
         String path = RealPathUtil.getRealPath(context,uri);
 
+        Log.d("salida", path);
+
         File file = new File(path);
         RequestBody fileBody = RequestBody.create(MediaType.parse("multiform/form-data"),file);
         MultipartBody.Part imagen = MultipartBody.Part.createFormData("ImagenFileName",file.getName(),fileBody);
@@ -61,6 +62,10 @@ public class NuevoInmuebleViewModel extends AndroidViewModel {
                 if(response.isSuccessful()){
                     mInmueble.postValue(response.body());
                     Toast.makeText(context,"El inmueble ha sido creado",Toast.LENGTH_LONG).show();
+                } else {
+                    Log.d("salida", response.toString());
+                    Log.d("salida", response.message());
+                    Log.d("salida", response.errorBody().toString());
                 }
             }
 
@@ -70,7 +75,7 @@ public class NuevoInmuebleViewModel extends AndroidViewModel {
             }
         });
     }
-    public LiveData getMutable(){
+    public LiveData getMInmueble(){
         if(mInmueble == null){
             mInmueble = new MutableLiveData<>();
         }
