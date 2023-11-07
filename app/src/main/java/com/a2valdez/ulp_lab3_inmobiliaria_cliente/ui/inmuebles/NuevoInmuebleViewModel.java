@@ -42,7 +42,7 @@ public class NuevoInmuebleViewModel extends AndroidViewModel {
         RequestBody direccion = RequestBody.create(MediaType.parse("application/json"),inmueble.getDireccion());
         RequestBody tipo = RequestBody.create(MediaType.parse("application/json"),inmueble.getTipo());
         RequestBody uso = RequestBody.create(MediaType.parse("application/json"),inmueble.getUso());
-        RequestBody ca = RequestBody.create(MediaType.parse("application/json"),inmueble.getAmbientes()+"");
+        RequestBody ambientes = RequestBody.create(MediaType.parse("application/json"),inmueble.getAmbientes()+"");
         RequestBody precio = RequestBody.create(MediaType.parse("application/json"),inmueble.getPrecio()+"");
 
         String path = RealPathUtil.getRealPath(context,uri);
@@ -51,7 +51,7 @@ public class NuevoInmuebleViewModel extends AndroidViewModel {
         MultipartBody.Part imagen = MultipartBody.Part.createFormData("ImagenFileName",file.getName(),fileBody);
 
         String token = ApiClientRetrofit.leerToken(context);
-        Call<Inmueble> llamada = ApiClientRetrofit.getApiInmobiliaria().crearInmueble(token, direccion,ca, tipo, uso, precio, imagen);
+        Call<Inmueble> llamada = ApiClientRetrofit.getApiInmobiliaria().crearInmueble(token, direccion, ambientes, tipo, uso, precio, imagen);
         llamada.enqueue(new Callback<Inmueble>() {
             @Override
             public void onResponse(Call<Inmueble> call, Response<Inmueble> response) {

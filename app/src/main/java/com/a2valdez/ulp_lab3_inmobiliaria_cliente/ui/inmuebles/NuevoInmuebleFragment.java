@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,6 +40,16 @@ public class NuevoInmuebleFragment extends Fragment {
         binding = FragmentNuevoInmuebleBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        //get the spinner from the xml.
+        Spinner dropdown = (Spinner)root.findViewById(R.id.spNuevoInmuebleUso);
+        //create a list of items for the spinner.
+        String[] items = new String[]{"Residencial", "Comercial"};
+        //create an adapter to describe how the items are displayed, adapters are used in several places in android.
+        //There are multiple variations of this, but this is the basic variant.
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
+        //set the spinners adapter to the previously created one.
+        dropdown.setAdapter(adapter);
+
         mv.getMutable().observe(getViewLifecycleOwner(), new Observer<Inmueble>() {
             @Override
             public void onChanged(Inmueble inmueble) {
@@ -55,7 +67,7 @@ public class NuevoInmuebleFragment extends Fragment {
                     inmueble.setDireccion(binding.etNuevoInmuebleDireccion.getText().toString());
                     inmueble.setAmbientes(Integer.parseInt(binding.etNuevoInmuebleAmbientes.getText().toString()));
                     inmueble.setTipo(binding.etNuevoInmuebleTipo.getText().toString());
-                    inmueble.setUso(binding.etNuevoInmuebleUso.getText().toString());
+                    //inmueble.setUso(binding.spNuevoInmuebleUso.getText().toString());
                     inmueble.setPrecio(Double.parseDouble(binding.etNuevoInmueblePrecio.getText().toString()));
                     mv.crearInmueble(inmueble, selectedImageUri);
                 } else {

@@ -1,6 +1,7 @@
 package com.a2valdez.ulp_lab3_inmobiliaria_cliente.ui.perfil;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +14,15 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.databinding.FragmentPerfilBinding;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Propietario;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 public class PerfilFragment extends Fragment {
     private FragmentPerfilBinding binding;
     private PerfilViewModel mv;
-
     Propietario propietarioActual = null;
-
+    private static final String URLBASE = "http://192.168.100.2:5000/";
+    //private static final String URLBASE = "http://192.168.1.191:5000/";
     public static PerfilFragment newInstance() {
         return new PerfilFragment();
     }
@@ -41,7 +44,13 @@ public class PerfilFragment extends Fragment {
                 binding.etPerfilEmail.setText(propietario.getEmail());
                 binding.etPerfilPassword.setText(propietario.getPassword());
                 binding.etPerfilTelefono.setText(propietario.getTelefono());
-                binding.ivPerfilAvatar.setImageResource(propietario.getAvatar());
+
+                String imagen = propietario.getAvatar().replace("\\","/");
+                String url = URLBASE+imagen;
+                Glide.with(getActivity())
+                        .load(url)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(binding.ivPerfilAvatar);
             }
         });
         mv.getMEsEditable().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
@@ -50,9 +59,9 @@ public class PerfilFragment extends Fragment {
                 binding.etPerfilDni.setEnabled(esEditable);
                 binding.etPerfilApellido.setEnabled(esEditable);
                 binding.etPerfilNombre.setEnabled(esEditable);
-                binding.etPerfilEmail.setEnabled(esEditable);
-                binding.etPerfilPassword.setEnabled(esEditable);
                 binding.etPerfilTelefono.setEnabled(esEditable);
+                //binding.etPerfilEmail.setEnabled(esEditable);
+                //binding.etPerfilPassword.setEnabled(esEditable);
 
                 binding.btPerfilEditar.setVisibility(esEditable ? View.GONE : View.VISIBLE);
                 binding.btPerfilGuardar.setVisibility(esEditable ? View.VISIBLE : View.GONE);

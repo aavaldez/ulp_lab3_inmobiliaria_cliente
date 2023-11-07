@@ -25,14 +25,14 @@ import java.util.List;
 
 public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHolder> {
     private List<Inmueble> inmuebles;
-    private Context context;
+    private Context contexto;
     private LayoutInflater li;
-    //private static final String URLBASE = "http://192.168.100.2:5000/";
-    private static final String URLBASE = "http://192.168.1.191:5000/";
+    private static final String URLBASE = "http://192.168.100.2:5000/";
+    //private static final String URLBASE = "http://192.168.1.191:5000/";
 
     public InmuebleAdapter(List<Inmueble> inmuebles, Context contexto, LayoutInflater li) {
         this.inmuebles = inmuebles;
-        this.context = contexto;
+        this.contexto = contexto;
         this.li = li;
     }
     @NonNull
@@ -48,7 +48,7 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
         holder.id.setText(String.valueOf(inmuebles.get(position).getId()));
         String imagen = inmuebles.get(position).getImagen().replace("\\","/");
         String url = URLBASE+imagen;
-        Glide.with(context)
+        Glide.with(contexto)
                 .load(url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imagen);

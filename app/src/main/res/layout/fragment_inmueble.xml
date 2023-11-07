@@ -134,7 +134,7 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:ems="10"
-            android:inputType="textWebPassword"
+            android:inputType="text"
             android:layout_marginTop="5dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"

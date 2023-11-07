@@ -1,6 +1,7 @@
 package com.a2valdez.ulp_lab3_inmobiliaria_cliente;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,6 +19,8 @@ import androidx.navigation.ui.NavigationUI;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.databinding.ActivityMainBinding;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Propietario;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.request.ApiClient;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     NavigationView navigationView;
     private MainActivityViewModel mv;
+    private static final String URLBASE = "http://192.168.100.2:5000/";
+    //private static final String URLBASE = "http://192.168.1.191:5000/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +63,12 @@ public class MainActivity extends AppCompatActivity {
 
                 nombreProp.setText(propietario.getNombre()+ " " + propietario.getApellido());
                 mailProp.setText(propietario.getEmail());
-                avatar.setImageResource(propietario.getAvatar());
+                String imagen = propietario.getAvatar().replace("\\","/");
+                String url = URLBASE+imagen;
+                Glide.with(getApplicationContext())
+                        .load(url)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(avatar);
             }
         });
     }

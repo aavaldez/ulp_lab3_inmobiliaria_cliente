@@ -61,7 +61,7 @@ public class InmuebleViewModel extends AndroidViewModel {
     public void actualizarInmueble(Inmueble i){
         String token = ApiClientRetrofit.leerToken(context);
         ApiClientRetrofit.ApiInmobiliaria apiInmobiliaria = ApiClientRetrofit.getApiInmobiliaria();
-        Call<Inmueble> call = apiInmobiliaria.cambiarEstado(token, i.getId(), !i.isEstado());
+        Call<Inmueble> call = apiInmobiliaria.cambiarEstado(token, i);
         call.enqueue(new Callback<Inmueble>() {
             @Override
             public void onResponse(@NonNull Call<Inmueble> call, @NonNull Response<Inmueble> response) {

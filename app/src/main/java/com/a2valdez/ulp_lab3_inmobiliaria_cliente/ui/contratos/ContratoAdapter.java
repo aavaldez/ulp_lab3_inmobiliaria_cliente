@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.R;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Contrato;
 import com.a2valdez.ulp_lab3_inmobiliaria_cliente.modelo.Inmueble;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
@@ -24,6 +27,8 @@ public class ContratoAdapter extends RecyclerView.Adapter<ContratoAdapter.ViewHo
     private List<Inmueble> inmuebles;
     private Context contexto;
     private LayoutInflater li;
+    private static final String URLBASE = "http://192.168.100.2:5000/";
+    //private static final String URLBASE = "http://192.168.1.191:5000/";
 
     public ContratoAdapter(List<Inmueble> inmuebles, Context contexto, LayoutInflater li) {
         this.inmuebles = inmuebles;
@@ -40,6 +45,12 @@ public class ContratoAdapter extends RecyclerView.Adapter<ContratoAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.direccion.setText(inmuebles.get(position).getDireccion());
         holder.id.setText(String.valueOf(inmuebles.get(position).getId()));
+        String imagen = inmuebles.get(position).getImagen().replace("\\","/");
+        String url = URLBASE+imagen;
+        Glide.with(contexto)
+                .load(url)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.imagen);
     }
     @Override
     public int getItemCount() {
@@ -49,12 +60,14 @@ public class ContratoAdapter extends RecyclerView.Adapter<ContratoAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView direccion;
         private EditText id;
+        private ImageView imagen;
         private Button ver;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             direccion = itemView.findViewById(R.id.tvItemContratoDireccion);
             id = itemView.findViewById(R.id.etItemContratoInmuebleId);
             ver = itemView.findViewById(R.id.btItemContratoVer);
+            imagen = itemView.findViewById(R.id.ivItemContrato);
             ver.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

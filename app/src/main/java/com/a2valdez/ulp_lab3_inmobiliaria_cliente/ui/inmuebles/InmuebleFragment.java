@@ -24,8 +24,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 public class InmuebleFragment extends Fragment {
     private FragmentInmuebleBinding binding;
     private InmuebleViewModel mv;
-    //private static final String URLBASE = "http://192.168.100.2:5000/";
-    private static final String URLBASE = "http://192.168.1.191:5000/";
+    private static final String URLBASE = "http://192.168.100.2:5000/";
+    //private static final String URLBASE = "http://192.168.1.191:5000/";
     public static InmuebleFragment newInstance() {
         return new InmuebleFragment();
     }

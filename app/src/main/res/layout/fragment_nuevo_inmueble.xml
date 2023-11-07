@@ -31,7 +31,6 @@
             android:layout_marginTop="5dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:enabled="false"
             android:hint="Ambientes"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +57,6 @@
             android:layout_marginTop="5dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:enabled="false"
             android:hint="Dirección"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +83,6 @@
             android:layout_marginTop="5dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:enabled="false"
             android:hint="Precio"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -103,18 +100,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etNuevoInmueblePrecio" />
 
-        <EditText
-            android:id="@+id/etNuevoInmuebleUso"
+        <Spinner
+            android:id="@+id/spNuevoInmuebleUso"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:ems="10"
-            android:inputType="textWebPassword"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
-            android:enabled="false"
+            android:ems="10"
             android:hint="Uso"
+            android:inputType="text"
+            android:spinnerMode="dropdown"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvNuevoInmuebleUso" />
 
@@ -128,7 +126,7 @@
             android:text="Tipo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etNuevoInmuebleUso" />
+            app:layout_constraintTop_toBottomOf="@+id/spNuevoInmuebleUso" />
 
         <EditText
             android:id="@+id/etNuevoInmuebleTipo"
@@ -139,7 +137,6 @@
             android:layout_marginTop="5dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:enabled="false"
             android:hint="Tipo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

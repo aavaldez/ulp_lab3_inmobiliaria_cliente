@@ -31,9 +31,8 @@ import retrofit2.http.Path;
 
 public class ApiClientRetrofit {
 
-    //private static final String URLBASE = "http://192.168.100.2:5000/";
-    private static final String URLBASE = "http://192.168.1.191:5000/";
-
+    private static final String URLBASE = "http://192.168.100.2:5000/";
+    //private static final String URLBASE = "http://192.168.1.191:5000/";
     private static ApiInmobiliaria apiInmobilaria;
 
     public static ApiInmobiliaria getApiInmobiliaria(){
@@ -65,17 +64,17 @@ public class ApiClientRetrofit {
         @GET("Inmuebles/Obtener/{id}")
         Call<Inmueble> obtenerInmueble(@Header("Authorization") String token,  @Path("id") int id);
 
-        @PUT("Inmuebles/Cambiar_Estado/{id}")
-        Call<Inmueble> cambiarEstado(@Header("Authorization") String token, @Path("id") int id, @Body boolean estado);
+        @PUT("Inmuebles/Cambiar_Estado/")
+        Call<Inmueble> cambiarEstado(@Header("Authorization") String token, @Body Inmueble inmueble);
 
         @Multipart
         @POST("Inmuebles/Crear")
         Call<Inmueble> crearInmueble(@Header("Authorization") String token,
-                                     @Part("Direccion") RequestBody direccion ,
-                                     @Part("Ambientes") RequestBody CAmbientes ,
-                                     @Part("Tipo") RequestBody Tipo ,
-                                     @Part("Uso") RequestBody Uso ,
-                                     @Part("Precio") RequestBody Precio ,
+                                     @Part("Direccion") RequestBody direccion,
+                                     @Part("Ambientes") RequestBody ambientes,
+                                     @Part("Tipo") RequestBody tipo,
+                                     @Part("Uso") RequestBody uso,
+                                     @Part("Precio") RequestBody precio,
                                      MultipartBody.Part imagen
         );
 
